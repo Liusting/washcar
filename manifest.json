@@ -52,10 +52,14 @@
                         "^/api" : "" //匹配请求路径里面有 /api 替换成 http://ceshi.dishait.cn
                     }
                 }
-            }
+            },
+            "https" : false
         },
         "uniStatistics" : {
             "enable" : true
+        },
+        "router" : {
+            "mode" : "history"
         }
     }
 }

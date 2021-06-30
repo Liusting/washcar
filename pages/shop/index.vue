@@ -45,9 +45,9 @@
 							<view class="flex justify-between align-center">
 								<view class="">
 									<text class="text-price text-red text-lg">18.90</text>
-									<text class="text-price margin-left-sm text-sm text-gray text-through">28.90</text>
+									<text style="text-decoration:line-through" class="text-price margin-left-sm text-sm text-gray">28.90</text>
 								</view>
-								<button class="cu-btn radius bg-blue sm">立即抢购</button>
+								<button class="cu-btn radius bg-blue sm" @click="buy">立即抢购</button>
 							</view>
 						</view>
 
@@ -100,6 +100,11 @@
 			},
 			search(){
 				console.log(this.keyword)
+			},
+			buy(){
+				uni.navigateTo({
+					url:'../shop/productDetail'
+				})
 			}
 		}
 	}

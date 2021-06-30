@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
+import wx from "weixin-js-sdk";
 
 
 import basics from './pages/basics/home.vue'
