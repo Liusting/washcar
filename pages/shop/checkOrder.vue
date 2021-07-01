@@ -1,10 +1,10 @@
 <template>
 	<view>
-		<view class="padding-xs flex align-center radius bg-white margin-sm">
+		<view class="padding flex align-center radius bg-white margin-sm">
 			<view class="cu-avatar round bg-orange">
 				<text class="cuIcon-location"></text>
 			</view>
-			<view class="margin-left" style="width:80%">
+			<view class="margin-left">
 				<text class="text-black text-bold">收货人：刘南</text>
 				<text class="margin-left ">13047838940</text>
 				<view>
@@ -61,15 +61,31 @@
 
 
 
+		<view class="bg-white padding-xs margin-sm radius">
+			
+			<view class="cu-form-group margin-top">
+				<view class="title">商品总价</view>
+				<view class="flex align-center">
+					<text class="text-price">99.00</text>
+				</view>
+			</view>
+			<view class="padding flex align-center justify-between">
+				<view style="font-size: 15px;">运费</view>
+				<view class="flex align-center">
+					+ <text class="text-price"> 10.00</text>
+				</view>
+			</view>
+		</view>
+
 		<view class="cu-bar bg-white tabbar foot border shop">
 
 			<view class="flex justify-end padding-right" style="width: 75%;">
 				<view>
 					<text class="text-black">合计：</text>
-					<text class="text-price text-lg text-red">{{saleprice*number}}</text>
+					<text class="text-price text-lg text-bold text-red">{{saleprice*number}}</text>
 				</view>
 			</view>
-			<view class="bg-blue submit">提交订单</view>
+			<view class="bg-blue submit" @click="applyOrder">提交订单</view>
 		</view>
 	</view>
 </template>
@@ -93,6 +109,11 @@
 					this.number--
 				}
 
+			},
+			applyOrder(){
+				uni.navigateTo({
+					url:'../shop/paySuccess'
+				})
 			}
 		}
 	}

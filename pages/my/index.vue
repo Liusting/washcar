@@ -18,7 +18,7 @@
 
 		<scroll-view scroll-y class="page" :style="[{height:deviceH-125 + 'px'}]">
 			<view class="margin-sm bg-white" style="border-radius:7px">
-				<view class="padding-tb padding-left-xs flex align-center justify-between">
+				<view class="padding-tb padding-left-xs flex align-center justify-between" @click="allOrder(0)">
 					<text class="text-lg text-black text-bold">
 						<text class="cuIcon-titles"></text>
 						我的订单</text>
@@ -28,7 +28,7 @@
 					<view class="flex text-center">
 						<view class="flex justify-center align-center margin-tb-lg flex-sub" v-for="item in orderItems"
 							:key="item.typeId">
-							<view class=" bg-white">
+							<view @click="allOrder(item.typeId)">
 								<view style="font-size:30px">
 									<text :class="item.icon"></text>
 								</view>
@@ -141,8 +141,14 @@
 
 		},
 		methods: {
+			allOrder(id){
+				console.log(id)
+				uni.navigateTo({
+					url:'../shop/orderList?id='+id
+				})
+			},
 			navBtn(id) {
-				// console.log(id)
+				
 				switch (id) {
 					case 1:
 					console.log("=====")
