@@ -68,6 +68,8 @@
 					</view>
 				</view>
 			</view>
+			
+			<navigator url="../shop/test">测试</navigator>
 
 			<view class="cu-tabbar-height"></view>
 		</scroll-view>
@@ -97,12 +99,12 @@
 						name: '地址管理',
 						color: 'bule'
 					},
-					{
-						id: 4,
-						icon: 'cuIcon-unlock',
-						name: '忘记密码',
-						color: 'pink'
-					}
+					// {
+					// 	id: 4,
+					// 	icon: 'cuIcon-unlock',
+					// 	name: '忘记密码',
+					// 	color: 'pink'
+					// }
 				],
 				orderItems: [{
 						typeId: 1,
@@ -157,6 +159,9 @@
 						})
 						break;
 					case 2:
+					uni.navigateTo({
+						url: '../my/coupon'
+					})
 						break;
 					case 3:
 					

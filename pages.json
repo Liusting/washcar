@@ -140,7 +140,7 @@
             "path" : "pages/my/addressList",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "地址列表",
                 "enablePullDownRefresh": false
             }
             
@@ -149,7 +149,7 @@
             "path" : "pages/my/addAddress",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "地址管理",
                 "enablePullDownRefresh": false
             }
             
@@ -158,7 +158,7 @@
             "path" : "pages/index/error",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "精洗车",
                 "enablePullDownRefresh": false
             }
             
@@ -167,7 +167,7 @@
             "path" : "pages/my/advice",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "意见反馈",
                 "enablePullDownRefresh": false
             }
             
@@ -176,7 +176,7 @@
             "path" : "pages/shop/productDetail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "商品详情",
                 "enablePullDownRefresh": false
             }
             
@@ -185,7 +185,7 @@
             "path" : "pages/shop/checkOrder",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "确认订单",
                 "enablePullDownRefresh": false
             }
             
@@ -194,7 +194,7 @@
             "path" : "pages/shop/paySuccess",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "精洗车",
                 "enablePullDownRefresh": false
             }
             
@@ -203,13 +203,31 @@
             "path" : "pages/shop/orderDetail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "订单详情",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
             "path" : "pages/shop/orderList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/coupon",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "优惠券",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/shop/test",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

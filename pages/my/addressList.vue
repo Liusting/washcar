@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<cu-custom isBack="true" bgColor="bg-white">
+			<block slot="backText">地址列表</block>
+		</cu-custom>
 		<scroll-view scroll-y="true" >
 			<view v-for="item in 5">
 				<view class="cu-bar flex bg-white " style="border-bottom:1px solid #f1f1f1">

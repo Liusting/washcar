@@ -1,6 +1,9 @@
 <template>
 	<view>
-		<view class="padding bg">
+		<cu-custom isBack="true" bgColor="bg-blue">
+			<block slot="backText"></block>
+		</cu-custom>
+		<view class="padding bg bg-blue">
 			<view class="text-xsl text-white flex justify-center">
 				<text class=" cuIcon-roundcheck"></text>
 			</view>
@@ -80,7 +83,6 @@
 	}
 
 	.bg {
-		background: #2f70df;
 		height: 450rpx;
 		border-bottom-left-radius: 30px;
 		border-bottom-right-radius: 30px;

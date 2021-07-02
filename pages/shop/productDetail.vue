@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<cu-custom isBack="true" bgColor="bg-white">
+			<block slot="backText">商品详情</block>
+		</cu-custom>
 		<scroll-view scroll-y="true">
 
 
@@ -55,11 +58,12 @@
 				</view>
 				客服
 			</button>
-			<view class="action">
-				<view class="cuIcon-home">
-				</view>
-				首页
-			</view>
+			<button class="action" open-type="redirect">
+				<navigator url="/pages/index/index" open-type="redirect"><view class="cuIcon-home">
+					</view>
+					首页</navigator>
+			</button>
+		
 			<view class="bg-blue submit" @click="checkOrder">立即订购</view>
 		</view>
 	</view>

@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<cu-custom isBack="true" bgColor="bg-red">
+			<block slot="backText">订单详情</block>
+		</cu-custom>
 		<scroll-view scroll-y style="height:724px">
 			<view style="height:15%" class="padding-tb text-center bg-red">
 				<view class="flex justify-center align-center" v-show="trade_status==1">

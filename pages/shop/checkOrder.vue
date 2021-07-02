@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<cu-custom isBack="true" bgColor="bg-white">
+			<block slot="backText">确认订单</block>
+		</cu-custom>
 		<view class="padding flex align-center radius bg-white margin-sm">
 			<view class="cu-avatar round bg-orange">
 				<text class="cuIcon-location"></text>

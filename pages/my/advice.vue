@@ -1,16 +1,15 @@
 <template>
 	<view>
 		
-		<!-- <cu-custom bgColor="bg-gradual-purple" isBack="{{true}}">
-		  <view slot="backText">返回</view>
-		  <view slot="content">我要报修</view>
-		</cu-custom> -->
+		<cu-custom bgColor="bg-blue" isBack="true">
+		  <view slot="backText">意见反馈</view>
+		</cu-custom>
 		<view class="cu-form-group align-start ">
-		  <text class="title"><text class="text-red">*</text>报修类型</text>
+		  <text class="title"><text class="text-red">*</text>意见类型</text>
 		</view>
 			<view class="cu-form-group align-start margin-top">
-				<view class="title"><text class="text-red">*</text>报修说明</view>
-				<textarea maxlength="100"  placeholder="请输入具体报修内容"></textarea>
+				<view class="title"><text class="text-red">*</text>具体意见</view>
+				<textarea maxlength="100"  placeholder="请输入具体意见"></textarea>
 			</view>
 		  	<view class="cu-bar bg-white margin-top">
 				<view class="action">
@@ -35,7 +34,7 @@
 			</view>
 		
 		  <view class="padding flex flex-direction">
-		    <button class="cu-btn bg-cyan margin-tb-sm lg">提交</button>
+		    <button class="cu-btn bg-blue margin-tb-sm lg">提交</button>
 		  </view>
 	</view>
 </template>

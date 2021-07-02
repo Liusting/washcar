@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<cu-custom isBack="true" >
+		</cu-custom>
 		<view class="bg-gray">
 			<view class=" grid col-5 cu-tabbar-height">
 				<view class=" flex  justify-center align-center" v-for="item in swipertab" >

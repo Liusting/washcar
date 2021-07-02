@@ -14,13 +14,13 @@
 				<button @click="paySub()" class="cu-btn bg-green shadow-blur round">搜索</button>
 			</view>
 		</view>
-		
-	<!-- 	<view class="bg-white padding">
+
+		<!-- 	<view class="bg-white padding">
 			<button @click="loc()" class="cu-btn bg-green shadow-blur round">获取地理位置{{lng}}==={{lat}}</button>
 			<button @click="code()" class="cu-btn bg-green shadow-blur round">调用二维码</button>
 			<button @click="pic()" class="cu-btn bg-green shadow-blur round">选择图片</button>
 		</view> -->
-		
+
 		<scroll-view scroll-y class="page" :style="[{height:deviceH-50 + 'px'}]">
 			<view v-for="item in 8">
 
@@ -100,22 +100,20 @@
 				deviceH: this.deviceH,
 				deviceW: this.deviceW,
 				CustomBar: this.CustomBar,
-				networkType:'',
-				lat:'',
-				lng:''
+				networkType: '',
+				lat: '',
+				lng: ''
 			};
 		},
 		mounted() {
 			//通过config接口注入权限验证配置
-			// var wx = require('weixin-js-sdk');
-			// console.log(wx)
-
+			let _this = this;
 			uni.request({
 				url: 'http://weixin123.gz2vip.idcfengye.com/getSign',
 				method: 'GET',
 				success(res) {
 					console.log(res.data)
-
+			
 					wx.config({
 						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 						appId: res.data.appId, // 必填，公众号的唯一标识
@@ -123,14 +121,14 @@
 						nonceStr: res.data.nonceStr, // 必填，生成签名的随机串
 						signature: res.data.signature, // 必填，签名
 						jsApiList: ["scanQRCode", "getLocation", "chooseImage", "uploadImage",
-							"downloadImage","getNetworkType"
+							"downloadImage", "getNetworkType","openLocation"
 						] // 必填，需要使用的JS接口列表
 					});
-
-
+			
+			
 				}
 			})
-
+			
 			wx.ready(function() {
 				//配置成功之后回调
 				console.log("微信JS SDK配置成功！");
@@ -139,7 +137,20 @@
 				console.log("微信JS SDK配置错误！");
 				// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 			});
+			
 
+			uni.getLocation({
+				type: 'gcj02',
+				altitude: true,
+				geocode: true,
+				success(res) {
+					_this.lat = res.latitude;
+					_this.lng = res.longitude;
+					console.log(res)
+				}
+			})
+
+			
 
 
 
@@ -148,42 +159,46 @@
 		methods: {
 			paySub() {
 				wx.checkJsApi({
-				  jsApiList: ['chooseImage','getLocation','getNetworkType'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-				  success: function(res) {
-					  console.log(res)
-				  // 以键值对的形式返回，可用的api值true，不可用为false
-				  // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-				  },
-				  fail:function(err){
-					  console.log(err)
-				  }
+					jsApiList: ['chooseImage', 'getLocation', 'getNetworkType'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+					success: function(res) {
+						console.log(res)
+						// 以键值对的形式返回，可用的api值true，不可用为false
+						// 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+					},
+					fail: function(err) {
+						console.log(err)
+					}
 				});
-				
+
 				let _this = this;
 				wx.getNetworkType({
-				  success: function (res) {
-				    var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
-					_this.networkType = networkType;
-					console.log("网络状态"+networkType)
-				  },
-				  fail:function(err){
-					  console.log(err)
-				  }
+					success: function(res) {
+						var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
+						_this.networkType = networkType;
+						console.log("网络状态" + networkType)
+					},
+					fail: function(err) {
+						console.log(err)
+					}
 				});
 				// var wx = require('weixin-js-sdk');
-				
 
-wx.getLocation({
-				  type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-				  success: function (res) {
-					  
-				    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-				    var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-					_this.lat = res.latitude;
-					_this.lng = res.longitude;
-				    var speed = res.speed; // 速度，以米/每秒计
-				    var accuracy = res.accuracy; // 位置精度
-				  }
+
+				wx.getLocation({
+					type: 'gcj02',
+					altitude:'true',
+					isHighAccuracy:true,
+					highAccuracyExpireTime:3000,
+					
+					success: function(res) {
+
+						var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+						var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+						_this.lat = res.latitude;
+						_this.lng = res.longitude;
+						var speed = res.speed; // 速度，以米/每秒计
+						var accuracy = res.accuracy; // 位置精度
+					}
 				});
 
 
@@ -208,21 +223,21 @@ wx.getLocation({
 				// 	}
 				// })
 			},
-			pic(){
+			pic() {
 				wx.chooseImage({
-				  count: 1, // 默认9
-				  sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-				  sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-				  success: function (res) {
-				  var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-				  }
+					count: 1, // 默认9
+					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+					success: function(res) {
+						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+					}
 				});
 			},
-			loc(){
+			loc() {
 				let _this = this;
-				
+
 			},
-			code(){
+			code() {
 				wx.ready(function() {
 					wx.scanQRCode({
 						// 微信扫一扫接口
@@ -231,7 +246,7 @@ wx.getLocation({
 						scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
 						success: function(res) {
 							const getCode = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-				
+
 						},
 						fail: function(res) {
 							Toast(res.errMsg);
