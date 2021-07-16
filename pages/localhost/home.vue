@@ -128,7 +128,6 @@
 			
 				}
 			})
-			
 			wx.ready(function() {
 				//配置成功之后回调
 				console.log("微信JS SDK配置成功！");
@@ -137,18 +136,17 @@
 				console.log("微信JS SDK配置错误！");
 				// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 			});
-			
 
-			uni.getLocation({
-				type: 'gcj02',
-				altitude: true,
-				geocode: true,
-				success(res) {
-					_this.lat = res.latitude;
-					_this.lng = res.longitude;
-					console.log(res)
-				}
-			})
+			// uni.getLocation({
+			// 	type: 'gcj02',
+			// 	altitude: true,
+			// 	geocode: true,
+			// 	success(res) {
+			// 		_this.lat = res.latitude;
+			// 		_this.lng = res.longitude;
+			// 		console.log(res)
+			// 	}
+			// })
 
 			
 
