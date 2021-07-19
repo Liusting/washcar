@@ -94,7 +94,8 @@
 
 						<view class="margin-top-sm" v-for="(item,index) in wsAttributeCategory" :key="item.id">
 							<view class="margin-bottom-sm">{{item.name}}</view>
-							<view style="display: inline-block;" v-for="(items,index) in item.attributeParamsList" :key="items.id">
+							<view style="display: inline-block;" v-for="(items,index) in item.attributeParamsList"
+								:key="items.id">
 								<button @click="attributeClick(items.name,item.name,item.id)" :disabled="items.disabled"
 									class="cu-btn round sm  margin-right-sm"
 									:class="items.check?'bg-red':'line-gray'">{{items.name}}</button>
@@ -132,7 +133,7 @@
 	export default {
 		data() {
 			return {
-				ff:[],
+				ff: [],
 				number: 1,
 				modalName: 'bottomModal',
 				wsProduct: {},
@@ -254,45 +255,59 @@
 			//点击时候判断
 			attributeClick(items, name, id) {
 				// console.log(this.skutco)
-				console.log(items)
-				
+				// console.log(items)
+
+
 				let jj = {
-					id:id,
-					name:items
+					id: id,
+					name: items
 				}
+				let uu = this.ff;
+				if (uu.length == 0) {
+					uu.push(jj);
+				} else {
+					if (uu.length == this.wsAttributeCategory.length) {
+						for (let e in uu) {
+							if (uu[e].id == id) {
+								uu[e] = jj;
+							}
+						}
+					} else {
+						for (let e in uu) {
+							if (uu[e].id == id) {
+								uu[e] = jj;
+							} else {
+								uu.push(jj)
+							}
+						}
+					}
+
+				}
+
+
+				// this.ff.push(jj)
 				
 				
-				this.ff.push(jj)
+				// console.log(uu)
+				// console.log(this.skutco)
+
+if(uu.length == this.wsAttributeCategory.length){
+	let tt = this.skutco;
+	for (let f in tt) {
+		let ss = tt[f].spDataList;
+		for (let r in ss) {
+			for (let r in uu) {
+				if(uu[r].id == ss[r].id){
+					if( uu[r].name == ss[r].value){
+						console.log(tt[f])
+					}
+					
+				}
+			}
+		}
+	}
+}
 				
-				console.log(this.ff)
-				
-				// let tt = this.skutco;
-				// for (let f in tt) {
-				// 	let ss = tt[f].spDataList;
-				// 	for (let r in ss) {
-				// 		if(ss[r].value == items){
-				// 			let vv = tt[f];
-				// 			console.log(vv)
-				// 			for (let k in vv) {
-				// 				let ww = vv.spDataList;
-							
-				// 				for (let p in ww) {
-									
-				// 					let kk = this.wsAttributeCategory;
-				// 					for (let i in kk) {
-				// 							let hh = kk[i].attributeParamsList;
-				// 							for (let j in hh) {
-				// 								if (ww[p].value == hh[j].name) {
-													
-				// 								} 
-				// 							}
-				// 					}
-				// 				}
-								
-				// 			}
-				// 		}
-				// 	}
-				// }
 				// console.log(this.wsAttributeCategory)
 
 				let kk = this.wsAttributeCategory;
